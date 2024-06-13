@@ -1,24 +1,22 @@
-// app.module.ts
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MenuSuperiorComponent } from './menu-superior/menu-superior.component';
+import { RodapeComponent } from './rodape/rodape.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
-    // Aqui você pode importar outros componentes, diretivas, pipes, etc.
+    AppComponent,
+    MenuSuperiorComponent,
+    RodapeComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserModule,
     AppRoutingModule
-    // Aqui você pode importar outros módulos necessários para o seu aplicativo
   ],
   providers: [],
   bootstrap: [AppComponent]
