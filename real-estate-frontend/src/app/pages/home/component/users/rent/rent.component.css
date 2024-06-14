@@ -1,0 +1,33 @@
+.container{
+    padding-top: 100px;
+}
+
+.buy_fin_group{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.buy_fin_group2{
+    width: 400px;
+    padding-top: 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.value_bar{
+    width: 600px;
+    padding-top: 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_submit{
+    padding-top: 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}

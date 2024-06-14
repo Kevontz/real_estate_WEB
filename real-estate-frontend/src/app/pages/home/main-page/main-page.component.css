@@ -1,0 +1,22 @@
+.background_image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;  
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+}
+
+.information_box{
+    font-family: 'Roboto', sans-serif;
+    padding-top: 100px;
+    padding-right: 10x;
+    width: 445px;
+    height: 100vh;
+}
+
+.box_informations{
+    display: flex;
+    justify-content: right;
+}
