@@ -1,1 +1,29 @@
-<p>login works!</p>
+
+
+<app-menu-superior></app-menu-superior>
+<div class="login-container">
+  <div class="login-card">
+    <div class="logo-container">
+    
+    </div>
+    <h2 class="login-title">Bem-vindo</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+        <div *ngIf="getErrors('email')" class="text-danger">
+          {{ getErrors('email') }}
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+        <div *ngIf="getErrors('password')" class="text-danger">
+          {{ getErrors('password') }}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Logar</button>
+    </form>
+    <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div>
+  </div>
+</div>
