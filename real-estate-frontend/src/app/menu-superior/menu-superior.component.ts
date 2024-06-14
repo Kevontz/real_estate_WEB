@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './menu-superior.component.html',
   styleUrl: './menu-superior.component.css'
 })
-export class MenuSuperiorComponent {
 
+export class MenuSuperiorComponent {
+  
 }
