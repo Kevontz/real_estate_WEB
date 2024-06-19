@@ -1,0 +1,16 @@
+.logo{
+    width: 6vw;
+    height: 10vh;
+    display: flex;
+    position: absolute;
+}
+
+.navbar-brand{
+    display: flex;
+    margin: 0 auto;
+}
+
+.navbar{
+    height: 70px;
+}
+

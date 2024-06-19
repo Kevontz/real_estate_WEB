@@ -1,37 +1,27 @@
 <div class="container">
-
     <div class="value_bar">
         <h3>Selecione o valor do aluguel desejado:</h3>
         <label for="customRange1" class="form-label">R$:</label>
-        <input type="range" class="form-range" id="customRange1">
+        <input type="range" class="form-range" id="customRange1" [(ngModel)]="valorAluguel" [min]="valorMinimo" [max]="valorMaximo">
+        <p>Valor selecionado: R$ {{ valorAluguel }}</p>
     </div>
 
-    <div class="buy_fin_group2">
-        <p>Valor da garantia:</p>
+    <div class="rent_details">
+        <p>Insira o número mínimo de meses de permanência:</p>
         <div class="input-group mb-3">
-            <span class="input-group-text">R$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-text">,00</span>
+            <input type="number" class="form-control" [(ngModel)]="mesesPermanencia" min="1">
+            <span class="input-group-text">meses</span>
         </div>
-        <p>Meses de permanência:</p>
-        <select class="form-select" size="2" aria-label="Size 3 select example">
-            <option selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-        </select>
 
         <div class="btn_submit">
-            <button type="button" class="btn btn-outline-success">Calcular aluguel</button>
+            <button type="button" class="btn btn-outline-success" (click)="calcularAluguel()">Calcular Aluguel</button>
         </div>
     </div>
-</div>
 
+    <div class="result" *ngIf="resultado">
+        <h4>Resultado do Cálculo:</h4>
+        <p>Valor do Aluguel: R$ {{ valorAluguel }}</p>
+        <p>Meses de Permanência: {{ mesesPermanencia }}</p>
+        <p>Total Estimado: R$ {{ totalEstimado }}</p>
+    </div>
+</div>

@@ -11,6 +11,8 @@ import { NavbarComponent } from './pages/home/component/navbar/navbar.component'
 import { BuyComponent } from './pages/home/component/users/buy/buy.component';
 import { RentComponent } from './pages/home/component/users/rent/rent.component';
 import { MainPageComponent } from './pages/home/main-page/main-page.component';
+import { FooterComponent } from './pages/home/component/footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,14 @@ import { MainPageComponent } from './pages/home/main-page/main-page.component';
     NavbarComponent,
     BuyComponent,
     RentComponent,
-    MainPageComponent
+    MainPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgbModule
   ],
   providers: [],

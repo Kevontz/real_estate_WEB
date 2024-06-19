@@ -1,45 +1,50 @@
 <div class="container">
 
+    <!-- Seleção de valor -->
     <div class="value_bar">
         <h3>Selecione o valor desejado:</h3>
         <label for="customRange1" class="form-label">R$:</label>
-        <input type="range" class="form-range" id="customRange1">
+        <input type="range" class="form-range" id="customRange1" [(ngModel)]="valorCompra" [min]="valorMinimo" [max]="valorMaximo">
+        <p>Valor selecionado: R$ {{ valorCompra }}</p>
     </div>
 
+    <!-- Alternar entre "à vista" e "financiamento" -->
     <div class="buy_fin_group">
-        <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" checked>
-        <label class="btn" for="option5">A vista</label>
+        <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" checked (click)="setarOpcao('avista')">
+        <label class="btn" for="option5">À vista</label>
     
-        <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
+        <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off" (click)="setarOpcao('financiamento')">
         <label class="btn" for="option6">Financiamento</label>
     </div>
 
-    <div class="buy_fin_group2">
-        <p>Insira o valor:</p>
+    <!-- Botão "Prosseguir" para "À vista" -->
+    <div class="btn_submit" *ngIf="opcao === 'avista'">
+        <button type="button" class="btn btn-outline-success" (click)="mostrarResultado()">Prosseguir</button>
+    </div>
+
+    <!-- Detalhes do financiamento -->
+    <div class="buy_fin_group2" *ngIf="opcao === 'financiamento'">
+        <p>Insira o valor do financiamento:</p>
         <div class="input-group mb-3">
             <span class="input-group-text">R$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <input type="number" class="form-control" [(ngModel)]="valorFinanciamento" min="0" aria-label="Amount (to the nearest dollar)">
             <span class="input-group-text">,00</span>
         </div>
         <p>Quantidade de parcelas:</p>
-        <select class="form-select" size="2" aria-label="Size 3 select example">
-            <option selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
+        <select class="form-select" [(ngModel)]="quantidadeParcelas">
+            <option *ngFor="let parcela of parcelas" [value]="parcela">{{ parcela }}</option>
         </select>
 
         <div class="btn_submit">
-            <button type="button" class="btn btn-outline-success">Calcular Juros</button>
+            <button type="button" class="btn btn-outline-success" (click)="calcularFinanciamento()">Calcular Financiamento</button>
         </div>
     </div>
-</div>
 
+    <!-- Exibição dos resultados -->
+    <div class="result" *ngIf="resultado">
+        <h4>Resultado do Cálculo:</h4>
+        <p *ngIf="opcao === 'avista'">Valor à Vista: R$ {{ valorCompra }}</p>
+        <p *ngIf="opcao === 'financiamento'">Valor do Financiamento: R$ {{ valorFinanciado | number: '1.2-2' }}</p>
+        <p *ngIf="opcao === 'financiamento'">Total com Juros: R$ {{ totalComJuros | number: '1.2-2' }}</p>
+    </div>
+</div>

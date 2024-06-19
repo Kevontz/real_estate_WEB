@@ -2,7 +2,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100vw;  
+    width: 70vw;  
     height: 100vh;
     position: fixed;
     z-index: -1;
@@ -11,12 +11,18 @@
 .information_box{
     font-family: 'Roboto', sans-serif;
     padding-top: 100px;
-    padding-right: 10x;
-    width: 445px;
+    width: 30vw;
     height: 100vh;
+    padding-left: 10px;
 }
 
 .box_informations{
     display: flex;
     justify-content: right;
+}
+
+.center_image{
+    position: absolute;
+    right: 50%;
+    bottom: 30%;
 }
