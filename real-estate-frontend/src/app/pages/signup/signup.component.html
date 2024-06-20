@@ -6,7 +6,7 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <h2 class="text-uppercase text-center mb-5">CRIE SUA CONTA</h2>
 
               <form [formGroup]="signupForm">
                 <div class="form-outline mb-4">
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example4cdg">Confirmação de senha</label>
+                  <label class="form-label" for="form3Example4cdg">Confirme sua senha</label>
                   <input type="text" formControlName="passwordConfirmation" class="form-control form-control-lg">
 
                   <!-- ERROR -->
@@ -55,11 +55,11 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button (click)="onSubmit()" [disabled]="!signupForm.valid" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                  <button (click)="onSubmit()" [disabled]="!signupForm.valid" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Registrar</button>
                 </div>
 
               </form>
-              <p class="text-center text-muted mt-5 mb-0">Have already an account? <a routerLink="/" class="fw-bold text-body"><u>Login here</u></a></p>
+              <p class="text-center text-muted mt-5 mb-0">Já possui conta? <a routerLink="/" class="fw-bold text-body"><u>Logue-se aqui</u></a></p>
 
             </div>
           </div>
