@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,24 +9,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   loginForm: FormGroup;
   invalidUser: boolean = false;
 
-  constructor(private router: Router) {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-    })
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
   }
 
-  login() {
-
-    if(this.loginForm.value['email'] == "admin@gmail.com" && this.loginForm.value['password'] == "admin") {
-      this.router.navigate(["/app"])
-    } else {
-      this.invalidUser = true;
+  login(): void {
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.userService.login(email, password).subscribe(
+        response => {
+          this.router.navigate(['/app/main']); 
+        },
+        error => {
+          this.invalidUser = true;
+        }
+      );
     }
-
   }
 }

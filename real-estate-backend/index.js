@@ -5,6 +5,7 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const propertyRoutes = require('./routes/propertyRoutes');
 const purchaseRoutes = require('./routes/purchaseRoutes');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -47,3 +48,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 .catch(err => {
   console.error('Erro ao conectar ao MongoDB:', err);
 });
+
+app.use(cors({
+  origin: 'http://localhost:4200', // Substitua pela URL do seu frontend Angular
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'] // Headers permitidos
+}));
