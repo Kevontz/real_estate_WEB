@@ -6,6 +6,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { BuyComponent } from './pages/home/component/users/buy/buy.component';
 import { RentComponent } from './pages/home/component/users/rent/rent.component';
 import { MainPageComponent } from './pages/home/main-page/main-page.component';
+import { FindEstateComponent } from './pages/home/component/users/find-estate/find-estate.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
     children: [
       {path: "main", component: MainPageComponent},
       {path: "buy", component: BuyComponent},
-      {path: "rent", component: RentComponent}
+      {path: "rent", component: RentComponent},
+      {path: "find", component: FindEstateComponent}
     ]
   }
 ]

@@ -1,28 +1,94 @@
-.background_image {
+/* styles.css */
+
+/* Seção Principal */
+.main-section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Imagem de Fundo */
+  .background_image {
+    background-image: url('/assets/images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 70vw;  
+    width: 100%;
     height: 100vh;
-    position: fixed;
+    position: flex;
     z-index: -1;
+    filter: blur(5px); /* Aplica o efeito de blur */
+    opacity: 0.9; /* Ajuste a opacidade conforme desejado */
 }
-
-.information_box{
-    font-family: 'Roboto', sans-serif;
-    padding-top: 100px;
-    width: 30vw;
-    height: 100vh;
-    padding-left: 10px;
-}
-
-.box_informations{
-    display: flex;
-    justify-content: right;
-}
-
-.center_image{
-    position: absolute;
-    right: 50%;
-    bottom: 30%;
-}
+  
+  /* Imagem Central */
+  .center_image {
+    width: 50%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px; /* Bordas arredondadas para a imagem */
+  }
+  
+  /* Caixa de Informações */
+  .box_informations {
+    background: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+  }
+  
+  /* Estilização do Texto */
+  .information_box h4, .information_box h6, .information_box p {
+    margin-bottom: 15px;
+  }
+  
+  .information_box .lead {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  /* Botão Customizado */
+  .custom-btn {
+    background-color: #007bff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Ajustes de Responsividade */
+  @media (max-width: 768px) {
+    .center_image {
+      width: 80%;
+    }
+  
+    .box_informations {
+      padding: 15px;
+    }
+  
+    .information_box .lead {
+      font-size: 1.2rem;
+    }
+  
+    /* Ajuste de Posição em Telas Menores */
+    .content-wrapper {
+      top: 50vh; /* Centraliza o conteúdo para telas menores */
+      transform: translate(-50%, -50%); /* Centraliza o conteúdo completamente em telas menores */
+    }
+  }
+  
+  /* Ajuste de Posição para Telas Maiores */
+  @media (min-width: 769px) {
+    .content-wrapper {
+      top: 35vh; /* Ajuste a posição para estar mais próximo do topo */
+      transform: translate(-50%, -35%); /* Centraliza verticalmente o elemento ajustando a posição */
+    }
+  }
+  

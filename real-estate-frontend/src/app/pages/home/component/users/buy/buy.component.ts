@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class BuyComponent {
   valorCompra: number = 0;
-  valorMinimo: number = 1000;
-  valorMaximo: number = 50000;
+  valorMinimo: number = 200000;
+  valorMaximo: number = 1000000;
 
   opcao: string = 'avista';
   valorFinanciamento: number = 0;

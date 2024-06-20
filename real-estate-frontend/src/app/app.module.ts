@@ -13,7 +13,9 @@ import { BuyComponent } from './pages/home/component/users/buy/buy.component';
 import { RentComponent } from './pages/home/component/users/rent/rent.component';
 import { MainPageComponent } from './pages/home/main-page/main-page.component';
 import { FooterComponent } from './pages/home/component/footer/footer.component';
+import { FindEstateComponent } from './pages/home/component/users/find-estate/find-estate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BuyComponent,
     RentComponent,
     MainPageComponent,
-    FooterComponent
+    FooterComponent,
+    FindEstateComponent
   ],
   imports: [
     BrowserModule,

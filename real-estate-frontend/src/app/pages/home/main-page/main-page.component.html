@@ -1,16 +1,28 @@
-<img class="background_image" src="assets/images/background.jpg">
-<img class="center_image" src="assets/images/Logo Site.png">
-
-<div class="box_informations">
-    <div class="information_box">
-        <h4>OLÁ,</h4>
-        <h4>SEJA BEM-VINDO A NOSSA IMOBILIÁRIA!</h4>
-        
-        <h5><p>Sua casa, sua aura!</p></h5>
-        <h6>Descubra o imóvel ideal para você. 🏡</h6>
-        <h6>Apartamentos, casas e terrenos em localizações privilegiadas.</h6>   
-        <p>Atendimento personalizado e soluções completas para facilitar sua vida.</p>    
-        <p>Comece sua busca agora mesmo!</p>
+<!-- main-page.component.html -->
+<div class="main-section container-fluid">
+    <div class="row align-items-center justify-content-center text-center vh-100 position-relative">
+      <!-- Imagem de Fundo -->
+      <div class="col-12 p-0">
+        <img class="background_image img-fluid" src="assets/images/background.jpg" alt="Imagem de Fundo">
+      </div>
+      
+      <!-- Conteúdo Principal -->
+      <div class="col-12 col-md-6 content-wrapper position-absolute top-50 start-50 translate-middle">
+        <img class="center_image mb-4" src="assets/images/Logo Site.png" alt="Logo">
+  
+        <div class="box_informations p-4 shadow">
+          <div class="information_box">
+            <h4>OLÁ,</h4>
+            <h4>SEJA BEM-VINDO A NOSSA IMOBILIÁRIA!</h4>
+            <p class="lead">Sua casa, sua aura!</p>
+            <h6>Descubra o imóvel ideal para você. 🏡</h6>
+            <p>Apartamentos, casas e terrenos em localizações privilegiadas.</p>
+            <p>Atendimento personalizado e soluções completas para facilitar sua vida.</p>
+            <p>Comece sua busca agora mesmo!</p>
+            <button class="btn btn-primary custom-btn mt-3" routerLink="/app/find">Comece sua busca!</button>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-
+  </div>
+  
