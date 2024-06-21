@@ -1,7 +1,8 @@
-// auth.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,20 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  register(user: any) {
+  register(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
 
-  login(credentials: any) {
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials).subscribe(response => {
-      localStorage.setItem('token', response.token);
-      this.router.navigate(['/area-cliente']);
-    });
+  login(credentials: any): void {
+    this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials).pipe(
+      tap(response => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['app/area-cliente']);
+      })
+    ).subscribe();
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
@@ -31,11 +34,12 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  getClientData() {
+  getClientData(): Observable<any> {
+    const token = localStorage.getItem('token');
     return this.http.get(`${this.apiUrl}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
     });
   }
 }

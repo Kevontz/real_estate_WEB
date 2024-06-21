@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
 @Injectable({
@@ -21,22 +21,21 @@ export class UserService {
     return this.http.post<any>(loginUrl, { email, password }).pipe(
       tap(response => {
         if (response.token) {
-          localStorage.setItem('authToken', response.token);
+          localStorage.setItem('token', response.token);
         }
       })
     );
   }
   
   logout(): void {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('token');
   }
   
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('authToken');
+    return !!localStorage.getItem('token');
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('authToken');
+    return !!localStorage.getItem('token');
   }
-  
 }

@@ -12,21 +12,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(express.json());
-
 // Middleware para permitir acesso a partir de diferentes origens (CORS)
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  );
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PATCH, PUT, DELETE, OPTIONS'
-  );
-  next();
-});
+app.use(cors({
+  origin: 'http://localhost:4200', // Substitua pela URL do seu frontend Angular
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'] // Headers permitidos
+}));
+
+app.use(express.json());
 
 // Rotas do backend
 app.use('/api/auth', authRoutes);
@@ -48,9 +41,3 @@ mongoose.connect(process.env.MONGODB_URI, {
 .catch(err => {
   console.error('Erro ao conectar ao MongoDB:', err);
 });
-
-app.use(cors({
-  origin: 'http://localhost:4200', // Substitua pela URL do seu frontend Angular
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
-  allowedHeaders: ['Content-Type', 'Authorization'] // Headers permitidos
-}));

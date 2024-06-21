@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,18 +7,27 @@ import { Observable } from 'rxjs';
 })
 export class AreaClienteService {
 
-  private baseUrl = 'http://localhost:8080/api'; // URL base do backend
+  private baseUrl = 'http://localhost:8080/api/users';
 
   constructor(private http: HttpClient) { }
 
   // Método para obter dados do cliente
   getClientData(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/area-cliente`);
+    const token = localStorage.getItem('token');
+    return this.http.get(`${this.baseUrl}`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    });
   }
 
   // Método para atualizar dados do cliente
   updateClientData(data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/area-cliente`, data);
+    const token = localStorage.getItem('token');
+    return this.http.put(`${this.baseUrl}`, data, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    });
   }
-
 }

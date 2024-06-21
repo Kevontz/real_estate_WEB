@@ -1,4 +1,3 @@
-// area-cliente.component.ts
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service'; 
 
@@ -16,7 +15,7 @@ export class AreaClienteComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getClientData().subscribe(
       (userInfo) => {
-        console.log(this.user)
+        console.log(userInfo); // Exibe informações do usuário
         this.user = userInfo;
       },
       (error) => {
@@ -28,6 +27,4 @@ export class AreaClienteComponent implements OnInit {
   logout(): void {
     this.authService.logout();
   }
-
 }
-

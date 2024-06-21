@@ -15,7 +15,6 @@ const routes: Routes = [
   {path: "", redirectTo: "/login", pathMatch: 'full'},
   {path: "login", component: LoginComponent},
   {path: "signup", component: SignupComponent},
-  {path: 'app/area-cliente', component: AreaClienteComponent },
   {
     path: "app", component: HomeComponent,
     children: [
@@ -23,6 +22,7 @@ const routes: Routes = [
       {path: "buy", component: BuyComponent},
       {path: "rent", component: RentComponent},
       {path: "find", component: FindEstateComponent},
+      {path: "area-cliente", component: AreaClienteComponent },
     ]
   }
 ]
