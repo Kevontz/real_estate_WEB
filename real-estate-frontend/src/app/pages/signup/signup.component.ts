@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service'; // Ajuste conforme necessário
+import { UserService } from '../services/user.service'; // Ajuste conforme necessário
 
 
 @Component({

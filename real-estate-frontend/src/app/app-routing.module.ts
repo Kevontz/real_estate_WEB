@@ -7,23 +7,25 @@ import { BuyComponent } from './pages/home/component/users/buy/buy.component';
 import { RentComponent } from './pages/home/component/users/rent/rent.component';
 import { MainPageComponent } from './pages/home/main-page/main-page.component';
 import { FindEstateComponent } from './pages/home/component/users/find-estate/find-estate.component';
+import { AreaClienteComponent } from './pages/area-cliente/area-cliente.component';
+import { AuthGuard } from './pages/services/auth.guard';
 
 
 const routes: Routes = [
   {path: "", redirectTo: "/login", pathMatch: 'full'},
   {path: "login", component: LoginComponent},
   {path: "signup", component: SignupComponent},
+  {path: 'app/area-cliente', component: AreaClienteComponent },
   {
     path: "app", component: HomeComponent,
     children: [
       {path: "main", component: MainPageComponent},
       {path: "buy", component: BuyComponent},
       {path: "rent", component: RentComponent},
-      {path: "find", component: FindEstateComponent}
+      {path: "find", component: FindEstateComponent},
     ]
   }
 ]
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

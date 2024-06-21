@@ -1,0 +1,17 @@
+<!-- area-cliente.component.html -->
+<div class="client-area-container" *ngIf="user">
+  <div class="header">
+    <h1>Bem-vindo, {{ user.name }}!</h1>
+    <button class="logout-btn" (click)="logout()">Sair</button>
+  </div>
+  <div class="client-info">
+    <div class="info-item">
+      <label>Nome:</label>
+      <span>{{ user.name }}</span>
+    </div>
+    <div class="info-item">
+      <label>Email:</label>
+      <span>{{ user.email }}</span>
+    </div>
+  </div>
+</div>

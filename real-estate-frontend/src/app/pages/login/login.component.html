@@ -14,17 +14,14 @@
               <form [formGroup]="loginForm">
 
                 <div class="form-outline form-white mb-4">
-                  <!-- ERROR -->
+
                   <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
                     <div class="text-danger">Email é obrigatório</div>
                   </div>
-                  <!-- ERROR -->
 
-                  <!-- ERROR -->
                   <div *ngIf="invalidUser">
                     <div class="text-danger">E-mail / senha inválidos</div>
                   </div>
-                  <!-- ERROR -->
 
                   <input type="email" id="typeEmailX" class="form-control form-control-lg" formControlName="email"/>
                   <label class="form-label" for="typeEmailX">E-mail</label>
@@ -32,11 +29,9 @@
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <!-- ERROR -->
                   <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
                     <div class="text-danger">Senha é um campo obrigatório</div>
                   </div>
-                  <!-- ERROR -->
 
                   <input type="password" id="typePasswordX" class="form-control form-control-lg"  formControlName="password"/>
                   <label class="form-label" for="typePasswordX">Senha</label>

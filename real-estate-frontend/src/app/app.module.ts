@@ -15,6 +15,7 @@ import { MainPageComponent } from './pages/home/main-page/main-page.component';
 import { FooterComponent } from './pages/home/component/footer/footer.component';
 import { FindEstateComponent } from './pages/home/component/users/find-estate/find-estate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AreaClienteComponent } from './pages/area-cliente/area-cliente.component';
 
 
 @NgModule({
@@ -27,8 +28,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BuyComponent,
     RentComponent,
     MainPageComponent,
+    AreaClienteComponent,
     FooterComponent,
-    FindEstateComponent
+    FindEstateComponent,
   ],
   imports: [
     BrowserModule,

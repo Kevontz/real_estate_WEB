@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +28,8 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.userService.login(email, password).subscribe(
         response => {
-          this.router.navigate(['/app/main']); 
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['app/area-cliente']); 
         },
         error => {
           this.invalidUser = true;
