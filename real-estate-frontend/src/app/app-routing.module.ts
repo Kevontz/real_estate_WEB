@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router'
+import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -10,26 +10,25 @@ import { FindEstateComponent } from './pages/home/component/users/find-estate/fi
 import { AreaClienteComponent } from './pages/area-cliente/area-cliente.component';
 import { AuthGuard } from './pages/services/auth.guard';
 
-
 const routes: Routes = [
-  {path: "", redirectTo: "/login", pathMatch: 'full'},
-  {path: "login", component: LoginComponent},
-  {path: "signup", component: SignupComponent},
+  { path: "", redirectTo: "/login", pathMatch: 'full' },
+  { path: "login", component: LoginComponent },
+  { path: "signup", component: SignupComponent },
   {
     path: "app", component: HomeComponent,
     children: [
-      {path: "main", component: MainPageComponent},
-      {path: "buy", component: BuyComponent},
-      {path: "rent", component: RentComponent},
-      {path: "find", component: FindEstateComponent},
-      {path: "area-cliente", component: AreaClienteComponent },
+      { path: "main", component: MainPageComponent },
+      { path: "buy", component: BuyComponent },
+      { path: "rent", component: RentComponent },
+      { path: "find", component: FindEstateComponent },
+      { path: "area-cliente", component: AreaClienteComponent, canActivate: [AuthGuard] }
     ]
-  }
-]
+  },
+  { path: "**", redirectTo: "/login" } // Rota padrão para qualquer outra rota inválida
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-
 export class AppRoutingModule { }

@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   register(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user);
+    return this.http.post(`${this.apiUrl}/register`, user); 
   }
 
   login(credentials: any): void {
@@ -22,7 +22,13 @@ export class AuthService {
         localStorage.setItem('token', response.token);
         this.router.navigate(['app/area-cliente']);
       })
-    ).subscribe();
+    ).subscribe(
+      null,
+      error => {
+        console.error('Erro ao fazer login:', error);
+        alert('Login falhou! Verifique suas credenciais.');
+      }
+    );
   }
 
   logout(): void {

@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const { jwtSecret } = require('../config/config'); // Utilize uma chave secreta segura
 
 const userController = {
   createUser: async (req, res) => {
@@ -16,7 +17,7 @@ const userController = {
       const newUser = new User({ name, email, password: hashedPassword });
       await newUser.save();
 
-      res.status(201).json({ message: 'Usuário criado com sucesso.', user: newUser });
+      res.status(201).json({ message: 'Usuário criado com sucesso.', user: { name, email } });
     } catch (error) {
       console.error('Erro ao criar usuário:', error);
       res.status(500).json({ message: 'Erro ao criar usuário.' });
@@ -37,7 +38,7 @@ const userController = {
         return res.status(400).json({ message: 'Credenciais inválidas.' });
       }
 
-      const token = jwt.sign({ userId: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user._id }, jwtSecret, { expiresIn: '1h' });
       res.json({ token });
     } catch (error) {
       console.error('Erro ao fazer login:', error);
@@ -48,7 +49,7 @@ const userController = {
   getClientData: async (req, res) => {
     try {
       const userId = req.user.userId;
-      const user = await User.findById(userId);
+      const user = await User.findById(userId).select('-password'); // Exclui a senha dos dados retornados
 
       if (!user) {
         return res.status(404).json({ message: 'Usuário não encontrado.' });
@@ -68,14 +69,14 @@ const userController = {
     try {
       const userId = req.user.userId;
       const updatedData = req.body;
-      const user = await User.findByIdAndUpdate(userId, updatedData, { new: true });
+      const user = await User.findByIdAndUpdate(userId, updatedData, { new: true }).select('-password'); // Exclui a senha dos dados retornados
 
       if (!user) {
         return res.status(404).json({ message: 'Usuário não encontrado.' });
       }
 
       res.json({
-        message: 'Dados do cliente atualizados com sucesso',
+        message: 'Dados do cliente atualizados com sucesso.',
         data: user
       });
     } catch (error) {
