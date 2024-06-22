@@ -1,7 +1,6 @@
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const { jwtSecret } = require('../config/config'); // Utilize uma chave secreta segura
+const { jwtSecret } = require('../config/config');
 
 const userController = {
   createUser: async (req, res) => {
@@ -13,8 +12,7 @@ const userController = {
         return res.status(400).json({ message: 'Usuário já existe.' });
       }
 
-      const hashedPassword = await bcrypt.hash(password, 10);
-      const newUser = new User({ name, email, password: hashedPassword });
+      const newUser = new User({ name, email, password });
       await newUser.save();
 
       res.status(201).json({ message: 'Usuário criado com sucesso.', user: { name, email } });
@@ -33,8 +31,7 @@ const userController = {
         return res.status(400).json({ message: 'Credenciais inválidas.' });
       }
 
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
+      if (password !== user.password) {
         return res.status(400).json({ message: 'Credenciais inválidas.' });
       }
 
@@ -49,7 +46,7 @@ const userController = {
   getClientData: async (req, res) => {
     try {
       const userId = req.user.userId;
-      const user = await User.findById(userId).select('-password'); // Exclui a senha dos dados retornados
+      const user = await User.findById(userId).select('-password');
 
       if (!user) {
         return res.status(404).json({ message: 'Usuário não encontrado.' });
@@ -69,7 +66,7 @@ const userController = {
     try {
       const userId = req.user.userId;
       const updatedData = req.body;
-      const user = await User.findByIdAndUpdate(userId, updatedData, { new: true }).select('-password'); // Exclui a senha dos dados retornados
+      const user = await User.findByIdAndUpdate(userId, updatedData, { new: true }).select('-password'); 
 
       if (!user) {
         return res.status(404).json({ message: 'Usuário não encontrado.' });

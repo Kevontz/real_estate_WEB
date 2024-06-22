@@ -12,11 +12,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Middleware para permitir acesso a partir de diferentes origens (CORS)
+
 app.use(cors({
-  origin: 'http://localhost:4200', // Substitua pela URL do seu frontend Angular
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
-  allowedHeaders: ['Content-Type', 'Authorization'] // Headers permitidos
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  allowedHeaders: ['Content-Type', 'Authorization'] 
 }));
 
 app.use(express.json());

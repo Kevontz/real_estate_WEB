@@ -1,4 +1,3 @@
-// authRoutes.js
 console.log('authRoutes loaded');
 
 const express = require('express');

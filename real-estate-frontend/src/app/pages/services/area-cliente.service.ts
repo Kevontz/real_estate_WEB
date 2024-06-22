@@ -11,7 +11,6 @@ export class AreaClienteService {
 
   constructor(private http: HttpClient) { }
 
-  // Método para obter dados do cliente
   getClientData(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(`${this.baseUrl}`, {
@@ -21,7 +20,6 @@ export class AreaClienteService {
     });
   }
 
-  // Método para atualizar dados do cliente
   updateClientData(data: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.put(`${this.baseUrl}`, data, {

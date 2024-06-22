@@ -11,15 +11,13 @@ export class RentComponent {
   valorMinimo: number = 500;
   valorMaximo: number = 5000;
 
-  // Variáveis para armazenar o resultado
   resultado: boolean = false;
   totalEstimado: number = 0;
 
   calcularAluguel() {
-    // Calcular o total estimado
+
     this.totalEstimado = this.valorAluguel * this.mesesPermanencia;
 
-    // Mostrar o resultado
     this.resultado = true;
   }
 }

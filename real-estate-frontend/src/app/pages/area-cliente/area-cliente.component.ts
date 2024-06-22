@@ -15,7 +15,7 @@ export class AreaClienteComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getClientData().subscribe(
       (userInfo) => {
-        console.log(userInfo); // Exibe informações do usuário
+        console.log(userInfo);
         this.user = userInfo;
       },
       (error) => {

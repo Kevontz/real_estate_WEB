@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: "area-cliente", component: AreaClienteComponent, canActivate: [AuthGuard] }
     ]
   },
-  { path: "**", redirectTo: "/login" } // Rota padrão para qualquer outra rota inválida
+  { path: "**", redirectTo: "/login" }
 ];
 
 @NgModule({

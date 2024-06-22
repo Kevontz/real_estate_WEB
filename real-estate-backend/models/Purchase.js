@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Definindo o esquema para o modelo Purchase
 const purchaseSchema = new mongoose.Schema({
     propertyId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -22,5 +21,4 @@ const purchaseSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-// Criando e exportando o modelo Purchase
 module.exports = mongoose.model('Purchase', purchaseSchema);

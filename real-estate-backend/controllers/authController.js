@@ -2,10 +2,10 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { jwtSecret } = require('../config/config');
 
-// Função para obter todos os usuários
+
 exports.getAllUsers = async (req, res) => {
   try {
-    // Busca todos os usuários e exclui a senha da resposta
+
     const users = await User.find().select('-password');
     res.json(users);
   } catch (err) {
@@ -14,7 +14,7 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-// Outras funções...
+
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
   try {

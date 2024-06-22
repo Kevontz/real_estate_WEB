@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   registerUser(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signup`, userData);
+    return this.http.post(`${this.apiUrl}/register`, userData);
   }
   
   login(email: string, password: string): Observable<any> {

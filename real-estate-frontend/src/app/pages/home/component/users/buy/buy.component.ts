@@ -21,7 +21,7 @@ export class BuyComponent {
 
   setarOpcao(opcao: string) {
     this.opcao = opcao;
-    this.resultado = false; // Reseta os resultados quando muda a opção
+    this.resultado = false;
   }
 
   mostrarResultado() {
